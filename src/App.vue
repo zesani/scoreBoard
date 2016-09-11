@@ -1,0 +1,82 @@
+<template>
+  <div id="app">
+    <div class="box" v-for="teamScore in teamScores">
+      <board :team-score="teamScore" :increase-score="increaseScore" :decrease-score="decreaseScore" :index="$index"></board>
+    </div>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  </div>
+</template>
+
+<script>
+import Board from './components/Board'
+
+export default {
+  components: {
+    Board
+  },
+  data () {
+    return {
+      teamScores: [
+        {
+          teamName: 'Home',
+          score: 0
+        },
+        {
+          teamName: 'Away',
+          score: 0
+        }
+      ]
+    }
+  },
+  methods: {
+    increaseScore: function (index, point) {
+      this.teamScores[index].score += point
+    },
+    decreaseScore: function (index, point) {
+      if (this.teamScores[index].score > 0) {
+        this.teamScores[index].score -= point
+      }
+    }
+  }
+}
+</script>
+
+<style>
+html {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+#app {
+  color: #2c3e50;
+  margin-top: 100px;
+  max-width: 900px;
+  font-family: Source Sans Pro, Helvetica, sans-serif;
+  text-align: center;
+}
+
+#app a {
+  color: #42b983;
+  text-decoration: none;
+}
+
+.logo {
+  width: 100px;
+  height: 100px
+}
+
+.box {
+  display: inline-block;
+   width: 300px;
+   height: 400px;
+   margin: 1px;
+}
+
+</style>

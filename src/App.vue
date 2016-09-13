@@ -1,32 +1,31 @@
 <template>
-  <div id="app">
-    <div class="box" v-for="teamScore in teamScores">
-      <board :team-score="teamScore" :increase-score="increaseScore" :decrease-score="decreaseScore" :index="$index"></board>
-    </div>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<div id="app">
+  <div class="box" v-for="teamScore in teamScores">
+    <board :team-score="teamScore" :increase-score="increaseScore" :decrease-score="decreaseScore" :index="$index"></board>
+    <increase-and-decrease-score :team-score="teamScore" :increase-score="increaseScore" :decrease-score="decreaseScore" :index="$index"></increase-and-decrease-score>
   </div>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</div>
 </template>
 
 <script>
 import Board from './components/Board'
-
+import IncreaseAndDecreaseScore from './components/IncreaseAndDecreaseScore'
 export default {
   components: {
-    Board
+    Board,
+    IncreaseAndDecreaseScore
   },
   data () {
     return {
-      teamScores: [
-        {
-          teamName: 'Home',
-          score: 0
-        },
-        {
-          teamName: 'Away',
-          score: 0
-        }
-      ]
+      teamScores: [{
+        teamName: 'Home',
+        score: 0
+      }, {
+        teamName: 'Away',
+        score: 0
+      }]
     }
   },
   methods: {
@@ -56,27 +55,16 @@ body {
 
 #app {
   color: #2c3e50;
-  margin-top: 100px;
+  margin-top: 0px;
   max-width: 900px;
   font-family: Source Sans Pro, Helvetica, sans-serif;
   text-align: center;
 }
 
-#app a {
-  color: #42b983;
-  text-decoration: none;
-}
-
-.logo {
-  width: 100px;
-  height: 100px
-}
-
 .box {
   display: inline-block;
-   width: 300px;
-   height: 400px;
-   margin: 1px;
+  width: 300px;
+  height: 400px;
+  margin: 1px;
 }
-
 </style>

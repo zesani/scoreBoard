@@ -1,21 +1,24 @@
 <template>
-<div id="app">
-  <div class="box" v-for="teamScore in teamScores">
-    <board :team-score="teamScore" :increase-score="increaseScore" :decrease-score="decreaseScore" :index="$index"></board>
-    <increase-and-decrease-score :team-score="teamScore" :increase-score="increaseScore" :decrease-score="decreaseScore" :index="$index"></increase-and-decrease-score>
+  <div id="app">
+    <div class="box" v-for="teamScore in teamScores">
+      <board :team-score="teamScore"></board><br>
+      <increase-score :increase-score="increaseScore" :index="$index"></increase-score><br>
+      <decrease-score :decrease-score="decreaseScore" :index="$index"></decrease-score>
+    </div>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   </div>
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-</div>
 </template>
 
 <script>
 import Board from './components/Board'
-import IncreaseAndDecreaseScore from './components/IncreaseAndDecreaseScore'
+import IncreaseScore from './components/IncreaseScore'
+import DecreaseScore from './components/DecreaseScore'
 export default {
   components: {
     Board,
-    IncreaseAndDecreaseScore
+    IncreaseScore,
+    DecreaseScore
   },
   data () {
     return {
@@ -66,5 +69,7 @@ body {
   width: 300px;
   height: 400px;
   margin: 1px;
+  border: 5px solid #333;
 }
+
 </style>

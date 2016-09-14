@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  props: ['teamScore', 'increaseScore', 'decreaseScore', 'index']
+  props: ['teamScore']
 }
 </script>
 
@@ -22,7 +22,7 @@ h1 {
 .score {
   width: 300px;
   height: 250px;
-  border: 5px solid #333;
+  border-bottom: 5px solid #333;
 }
 
 </style>
